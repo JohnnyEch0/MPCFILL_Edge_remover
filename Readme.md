@@ -4,5 +4,10 @@ Right now I was to lazy to add more flags and a flag parser, might add it later.
 
 Some math was stolen from [preshtildeath](https://github.com/preshtildeath/print-proxy-prep/blob/main/main.py#L129) 
 
+## Usage
+- Download Images from mpcfill
+- put them in a folder within the script
+- install pillow
+- run python resize + remove edges.py <images folder> <cropped folder>
 ## Flags
 -  use -test for running a trial of 7 images
