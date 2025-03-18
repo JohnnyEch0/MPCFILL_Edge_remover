@@ -8,6 +8,7 @@ Some math was stolen from [preshtildeath](https://github.com/preshtildeath/print
 - Download Images from mpcfill
 - put them in a folder within the script folder
 - install pillow
-- run python resize.py "images folder" "cropped folder"
+- run python main.py "source images folder" "cropped folder"
 ## Flags
--  use -test for running a trial of 7 images
+- use -test for running a trial of 7 images
+- use -d or -dimensions to change target dimensions (use like "-d 1000x2000")

@@ -1,6 +1,7 @@
 from PIL import Image
 import os
 import sys
+import arg_parser
 
 
 def remove_border(img):
@@ -13,7 +14,7 @@ def remove_border(img):
     img = img.crop((c, c, w - c, h - c))
     return img
 
-def resize_image(input_path, output_path, target_width=1490, target_height=2080):
+def resize_image(input_path, output_path, target_width, target_height):
     """
     Process an image by:
     - remove edge 
@@ -33,7 +34,7 @@ def resize_image(input_path, output_path, target_width=1490, target_height=2080)
         print(f"Error processing {input_path}: {e}")
         return False
 
-def process_directory(input_dir, output_dir, test, target_width=1490, target_height=2080):
+def process_directory(input_dir, output_dir,  target_width=1490, target_height=2080, test=False):
     """
     Process all .png and .jpeg/.jpg files in a directory.
     """
@@ -67,14 +68,9 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: python image_resizer.py <input_directory> <output_directory>")
         sys.exit(1)
-    
-    input_dir = sys.argv[1]
-    output_dir = sys.argv[2]
-    if len(sys.argv) < 4:
-        test = False
-    elif sys.argv[3] == "-test":
-        test = True
-    else:
-        test = False
 
-    process_directory(input_dir, output_dir, test)
+    input_dir, output_dir, target_width, target_height, test_mode = arg_parser.main()
+    print(target_width, target_height)
+
+
+    process_directory(input_dir, output_dir, target_width, target_height, test_mode)
