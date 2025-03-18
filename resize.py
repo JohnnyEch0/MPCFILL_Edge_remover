@@ -16,8 +16,8 @@ def remove_border(img):
 def resize_image(input_path, output_path, target_width=1490, target_height=2080):
     """
     Process an image by:
-    1. Detecting and removing black borders
-    3. Resizing to target dimensions (1490x2080)
+    - remove edge 
+    - resize to target dimensions
     """
     try:
         with Image.open(input_path) as img:
