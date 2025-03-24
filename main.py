@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 import sys
-import arg_parser
+import cmd_parse
 
 
 def remove_border(img):
@@ -65,12 +65,15 @@ def process_directory(input_dir, output_dir,  target_width=1490, target_height=2
     sys.exit(0)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python image_resizer.py <input_directory> <output_directory>")
+    try:
+
+        input_dir, output_dir, target_width, target_height, test_mode = cmd_parse.main()
+        print(target_width, target_height)
+
+
+        process_directory(input_dir, output_dir, target_width, target_height, test_mode)
+    except Exception as e:
+        print(f"Error: {e}")
+        input("Press Enter to exit...")
+        
         sys.exit(1)
-
-    input_dir, output_dir, target_width, target_height, test_mode = arg_parser.main()
-    print(target_width, target_height)
-
-
-    process_directory(input_dir, output_dir, target_width, target_height, test_mode)
