@@ -4,17 +4,17 @@ import sys
 import cmd_parse
 
 
-def remove_border(img):
+def remove_border(img, crop_factor=0.11):
     """
     Border removal maths are straightaway stolen from: https://github.com/preshtildeath/print-proxy-prep/blob/main/main.py#L129 
     """
 
     w, h = img.size
-    c = round(0.12 * min(w / 2.72, h / 3.7))    
+    c = round(crop_factor * min(w / 2.72, h / 3.7))    
     img = img.crop((c, c, w - c, h - c))
     return img
 
-def resize_image(input_path, output_path, target_width, target_height):
+def resize_image(input_path, output_path, target_width, target_height, crop_factor):
     """
     Process an image by:
     - remove edge 
@@ -22,7 +22,7 @@ def resize_image(input_path, output_path, target_width, target_height):
     """
     try:
         with Image.open(input_path) as img:
-            img = remove_border(img)
+            img = remove_border(img, crop_factor)
             img = img.resize((target_width, target_height), Image.LANCZOS)
             
             # Save the result
@@ -34,7 +34,7 @@ def resize_image(input_path, output_path, target_width, target_height):
         print(f"Error processing {input_path}: {e}")
         return False
 
-def process_directory(input_dir, output_dir,  target_width=1490, target_height=2080, test=False):
+def process_directory(input_dir, output_dir,  target_width=1490, target_height=2080, test=False, crop_factor=0.12):
     """
     Process all .png and .jpeg/.jpg files in a directory.
     """
@@ -52,7 +52,7 @@ def process_directory(input_dir, output_dir,  target_width=1490, target_height=2
             input_path = os.path.join(input_dir, filename)
             output_path = os.path.join(output_dir, filename)
             
-            if resize_image(input_path, output_path, target_width, target_height):
+            if resize_image(input_path, output_path, target_width, target_height, crop_factor):
                 processed += 1
             else:
                 failed += 1
@@ -67,11 +67,11 @@ def process_directory(input_dir, output_dir,  target_width=1490, target_height=2
 if __name__ == "__main__":
     try:
 
-        input_dir, output_dir, target_width, target_height, test_mode = cmd_parse.main()
+        input_dir, output_dir, target_width, target_height, test_mode, crop_factor = cmd_parse.main()
         print(target_width, target_height)
 
 
-        process_directory(input_dir, output_dir, target_width, target_height, test_mode)
+        process_directory(input_dir, output_dir, target_width, target_height, test_mode, crop_factor)
     except Exception as e:
         print(f"Error: {e}")
         input("Press Enter to exit...")
