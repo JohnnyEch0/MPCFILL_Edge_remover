@@ -12,3 +12,6 @@ Some math was stolen from [preshtildeath](https://github.com/preshtildeath/print
 ## Flags
 - use -test for running a trial of 7 images
 - use -d or -dimensions to change target dimensions (use like "-d 1000x2000")
+
+## .exe Version
+Is to be found on the corresponding branch.
