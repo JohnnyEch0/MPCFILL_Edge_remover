@@ -4,7 +4,7 @@ import sys
 import cmd_parse
 
 
-def remove_border(img, crop_factor=0.11):
+def remove_border(img, crop_factor=0.115):
     """
     Border removal maths are straightaway stolen from: https://github.com/preshtildeath/print-proxy-prep/blob/main/main.py#L129 
     """
@@ -34,7 +34,7 @@ def resize_image(input_path, output_path, target_width, target_height, crop_fact
         print(f"Error processing {input_path}: {e}")
         return False
 
-def process_directory(input_dir, output_dir,  target_width=1490, target_height=2080, test=False, crop_factor=0.12):
+def process_directory(input_dir, output_dir,  target_width=1490, target_height=2080, test=False, crop_factor=0.115):
     """
     Process all .png and .jpeg/.jpg files in a directory.
     """

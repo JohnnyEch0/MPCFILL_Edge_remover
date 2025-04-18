@@ -14,7 +14,7 @@ def main():
     # sys.path[0] (for coding) #os.path.dirname(sys.executable) <-- for .exe
     output_folder = "edge_remover_output"
     test_mode = False
-    crop_factor = 0.11
+    crop_factor = 0.115
 
     print(Welcome)   
     
@@ -43,7 +43,7 @@ def main():
         elif user_input == "-t":
             test_mode = not test_mode
         elif user_input == "-c":
-            crop_factor = float(input("Enter desired crop ratio (0.12 is default)"))
+            crop_factor = float(input("Enter desired crop ratio (0.115 is default)"))
         elif user_input == "-q":
             sys.exit(0)
         else:
