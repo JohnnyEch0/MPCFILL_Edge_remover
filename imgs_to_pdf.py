@@ -24,13 +24,6 @@ CARD_HEIGHT_PT = ( CARD_HEIGHT + BLEED )  * MM_TO_PT
 MARGIN_X, MARGIN_Y = 13, 30
 SPACING_X, SPACING_Y = 3 * MM_TO_PT, 3 * MM_TO_PT
 
-CARD_POSITIONS = []
-for i in range(3):
-    for j in range(3):
-        x = MARGIN_X + j * (CARD_WIDTH_PT + SPACING_X) + (SPACING_X / 2)
-        y = MARGIN_Y + i * (CARD_HEIGHT_PT + SPACING_Y) + (SPACING_Y / 2)
-        CARD_POSITIONS.append((x, y))
-print(f"Card positions: {CARD_POSITIONS}")
 """
 For Libers Muster, margin = 13,30 and spacing = 3 * mm_to_pt seems to work perfectly
 """
