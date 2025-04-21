@@ -1,0 +1,9 @@
+{
+    "card_dimensions": {
+        "width": 149,
+        "height": 208
+    },
+    "crop_factor": 0.115,
+    "target_bleed": 1,
+    "delete_cards": false
+}

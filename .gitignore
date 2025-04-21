@@ -2,3 +2,10 @@ __pycache__/
 karnimanie(1).ico
 output/
 
+*.xml
+credentials.json
+mpcfill-to-pdf-tool-0aafb35b956a.json
+*.pdf
+card_images/
+Ressources/
+features/
